@@ -9,7 +9,7 @@ import numpy as np
 from PIL import Image
 
 # Path to the binary file
-bin_file_path = "image.bin"
+bin_file_path = "1.2 Software\DCT\SoftwarecatData.bin"
 
 width = 100
 height = 100
@@ -28,5 +28,7 @@ image_data = np.reshape(pixel_values, (height, width))
 image = Image.fromarray(image_data)
 
 
+
+
 print("Image formed from image data")
-image.save("3. ProjectRevisited/testimage.png")
+image.save("Images/Software/SoftwareDCTcat.png")
