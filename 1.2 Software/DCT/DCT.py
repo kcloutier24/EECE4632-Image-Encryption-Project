@@ -89,7 +89,7 @@ print("Writting to test out, numbers")
 
 
 
-
+########################################################################################################################################
 import numpy as np
 import cv2
 
@@ -119,6 +119,7 @@ input_file = '1.2 Software\DCT\SoftwarecatData.bin'
 output_file = '1.2 Software\DCT\SoftwareDCTcat.bin'
 dct_encode(input_file, output_file)
 print("dct encoded")
+########################################################################################################################################
 
 
 
