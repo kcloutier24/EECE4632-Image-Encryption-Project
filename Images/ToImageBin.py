@@ -3,12 +3,11 @@
 
 
 
-with open("1.2 Software\DCT\SoftwarecatData.bin", "rb") as f:
+with open("1.2 Software\DCT\SoftwareDCTcat.bin", "rb") as f:
     str_data = f.read()
     data = []
-    newstr = str_data.decode()
     #print(newstr)
-    for d in newstr:
+    for d in str_data:
         #print(d)
         data.append(d)
     result_string = ''.join(data)

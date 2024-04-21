@@ -9,7 +9,7 @@ import numpy as np
 from PIL import Image
 
 # Path to the binary file
-bin_file_path = "1.2 Software\DCT\SoftwarecatData.bin"
+bin_file_path = "1.2 Software\DCT\SoftwareDCTcatDataImage.bin"
 
 width = 100
 height = 100
