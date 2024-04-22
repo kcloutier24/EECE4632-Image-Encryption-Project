@@ -10,10 +10,8 @@ void Huff(hls::stream<ap_axis<32, 2, 5, 6>> &A, hls::stream<ap_axis<32, 2, 5, 6>
 #pragma HLS INTERFACE s_axilite port = return
 
     ap_axis<32, 2, 5, 6> tmp;
-    ap_axis<32, 2, 5, 6> result;
 
     ap_fixed<32, 12> in_data[64];
-    ap_fixed<32,12> test =  9;
 
     int index = 0; // Initialize index
 
@@ -22,11 +20,17 @@ void Huff(hls::stream<ap_axis<32, 2, 5, 6>> &A, hls::stream<ap_axis<32, 2, 5, 6>
         // Read data from stream A
         A.read(tmp);
 
+        if(tmp.data<6)
+        {
+        	tmp.data = tmp.data;
+        }
+        else
+        {
+        	tmp.data =  tmp.data - 5;
+        }
 
-        result.data =  tmp.data - test;
 
-
-        B.write(result);
+        B.write(tmp);
 
         // Check if the current packet is the last one
         if (tmp.last)
