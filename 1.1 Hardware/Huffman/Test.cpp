@@ -13,7 +13,7 @@ void Huff(hls::stream<ap_axis<32, 2, 5, 6>> &A, hls::stream<ap_axis<32, 2, 5, 6>
     ap_axis<32, 2, 5, 6> result;
 
     ap_fixed<32, 12> in_data[64];
-    ap_fixed<32,12> test =  5;
+    ap_fixed<32,12> test =  9;
 
     int index = 0; // Initialize index
 
@@ -23,7 +23,7 @@ void Huff(hls::stream<ap_axis<32, 2, 5, 6>> &A, hls::stream<ap_axis<32, 2, 5, 6>
         A.read(tmp);
 
 
-        result.data =  tmp.data+ test;
+        result.data =  tmp.data - test;
 
 
         B.write(result);
