@@ -1,16 +1,16 @@
 #include "ap_axi_sdata.h"
 #include "hls_stream.h"
 
-#define DCT_SIZE 8 // Change this to your desired DCT size
+#define DCT_SIZE 8 
 typedef short dct_data_t;
 
 void dct(hls::stream<ap_axis<32, 2, 5, 6>> &input_stream, hls::stream<ap_axis<32, 2, 5, 6>> &output_stream)
 {
-    // Internal buffers
+ 
 
-#pragma HLS INTERFACE axis port = input_stream
-#pragma HLS INTERFACE axis port = output_stream
-#pragma hls interface s_axilite port = return
+    #pragma HLS INTERFACE axis port = input_stream
+    #pragma HLS INTERFACE axis port = output_stream
+    #pragma hls interface s_axilite port = return
     dct_data_t in_block[DCT_SIZE][DCT_SIZE];
     dct_data_t out_block[DCT_SIZE][DCT_SIZE];
 
@@ -24,10 +24,11 @@ void dct(hls::stream<ap_axis<32, 2, 5, 6>> &input_stream, hls::stream<ap_axis<32
         }
     }
 
-    // Perform 2D DCT
+
     unsigned int k, n;
 
     int tmp;
+
     const dct_data_t dct_coeff_table[DCT_SIZE][DCT_SIZE] = {
         8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
         11363, 9633, 6436, 2260, -2260, -6436, -9632, -11362,
@@ -55,7 +56,7 @@ void dct(hls::stream<ap_axis<32, 2, 5, 6>> &input_stream, hls::stream<ap_axis<32
         }
     }
 
-    // Write output data to stream
+    //  output data to stream
     for (int r = 0; r < DCT_SIZE; r++)
     {
         for (int c = 0; c < DCT_SIZE; c++)
