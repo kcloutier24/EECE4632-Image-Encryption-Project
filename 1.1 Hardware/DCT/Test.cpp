@@ -10,33 +10,23 @@ void DCT(hls::stream<ap_axis<32, 2, 5, 6>> &A, hls::stream<ap_axis<32, 2, 5, 6>>
 
     ap_axis<32, 2, 5, 6> tmp;
     ap_axis<32, 2, 5, 6> result;
-    ap_fixed<32, 12> counter = 0;
+    int counter = 0;
 
 
-    // Dummy coefficients for testing
-
-
-    // Process each packet
-    while (1)
-    {
-        // Read input packet
-        A.read(tmp);
-
-        counter++;
-
-
-
-
-        B.write(tmp.data * (!(counter & 1) ? 125 : 1767766953));
-
-        // Break out of the loop if it's the last packet
-        if (tmp.last)
+        while(1)
         {
-            break;
-    }
+    	A.read(tmp);
 
 
-    }
+    	tmp.data+=7;
+
+
+    	B.write(tmp);
+         if(tmp.last)
+         {
+             break;
+         }
+        }
 
 
 }
